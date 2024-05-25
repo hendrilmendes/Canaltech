@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:webfeed/webfeed.dart';
+import 'package:webfeed_revised/webfeed_revised.dart';
 
 class RSSService {
   static Future<RssFeed?> loadFeed(String url) async {

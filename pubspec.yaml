@@ -2,7 +2,7 @@ name: canaltech
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 4.0.0+80
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
@@ -11,13 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cached_network_image: ^3.3.1
-  cupertino_icons: ^1.0.6
   http: ^1.2.1
-  html: ^0.15.4 
-  # Shimer
-  shimmer: ^3.0.0
-  webfeed: ^0.7.0
+  
+  flutter_html: ^3.0.0-beta.2
+
+  webfeed_revised: ^0.7.2
+  
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

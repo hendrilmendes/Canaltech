@@ -1,7 +1,9 @@
 import 'package:canaltech/service/service_rss.dart';
+import 'package:canaltech/telas/post/post_page.dart';
 import 'package:canaltech/widgets/build_image.dart';
 import 'package:flutter/material.dart';
-import 'package:webfeed/domain/rss_feed.dart';
+import 'package:intl/intl.dart'; // Importe para formatação de data
+import 'package:webfeed_revised/domain/rss_feed.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBody() {
     if (_feed == null) {
       return const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator.adaptive(),
       );
     } else {
       return ListView.builder(
@@ -55,15 +57,28 @@ class _HomePageState extends State<HomePage> {
             clipBehavior: Clip.hardEdge,
             child: ListTile(
               title: Text(item.title ?? ''),
-              subtitle: Text(item.pubDate.toString()),
+              subtitle: Text(_formatDate(item.pubDate) ?? ''),
               leading: buildImage(item),
               onTap: () {
-                // Aqui você pode lidar com o que acontece quando o usuário toca em um item do feed
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PostPage(item: item),
+                  ),
+                );
               },
             ),
           );
         },
       );
+    }
+  }
+
+  String? _formatDate(DateTime? date) {
+    if (date != null) {
+      return DateFormat('dd/MM/yyyy - HH:mm').format(date);
+    } else {
+      return null;
     }
   }
 }
